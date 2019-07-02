@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TodoList</title>
+</head>
+<body>
+    <input id="newItem" type="text"/>
+    <button onclick="addItem()">Add</button>
+    <ul id="todo">
+
+    </ul>
+    <button onclick="removeItem()">Remove</button>
+
+    <script type="text/javascript">
+        var toDo = [
+            "wake up",
+            "wash",
+            "eat"
+        ]
+
+        function addItem(){
+            //get value of the input
+            //add to todolist array
+            //rerender
+            var input = document.getElementById("newItem");
+            var newValue = input.value;
+            toDo.push(newValue);
+
+            render();
+            input.value = "";
+
+        }
+        function removeItem(){
+            
+            toDo.pop();
+
+            render();
+        }
+
+        function render(){
+            var htmlList = document.getElementById("todo");
+            var content = toDo.map(function(item){
+                return "<li>" + item + "</li>"
+        });
+        htmlList.innerHTML = content.join("");
+
+        }
+        
+       
+        render();
+    </script>
+</body>
+</html>
